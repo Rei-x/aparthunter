@@ -1,0 +1,294 @@
+schema {
+  query: Query
+}
+
+type Query {
+  searchAds(lang: Language, page: PageInput, sort: SortInput): SearchResult
+  advert(id: ID!): AdvertResult
+}
+
+enum Language {
+  PL
+  EN
+  DE
+}
+
+input PageInput {
+  current: Int
+  limit: Int
+}
+
+input SortInput {
+  direction: SortDirection
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+union SearchResult = FoundAds | NotFound
+
+type FoundAds {
+  items: [AdItem]
+  locationString: String
+}
+
+type NotFound {
+  message: String
+}
+
+type AdItem {
+  id: ID
+  title: String
+  slug: String
+  createdAt: String
+  estate: String
+  developmentId: ID
+  developmentTitle: String
+  developmentUrl: String
+  transaction: String
+  location: LocationDetails
+  images: [Image]
+  isExclusiveOffer: Boolean
+  isPrivateOwner: Boolean
+  isPromoted: Boolean
+  agency: AgencyListingDetails
+  openDays: [String]
+  totalPrice: Money
+  rentPrice: Money
+  pricePerSquareMeter: Money
+  areaInSquareMeters: Float
+  roomsNumber: Int
+  hidePrice: Boolean
+  floorNumber: Int
+  dateCreated: String
+  dateCreatedFirst: String
+  pushedUpAt: String
+  shortDescription: String
+}
+
+type LocationDetails {
+  mapDetails: MapDetails
+  address: Address
+  reverseGeocoding: ReverseGeocoding
+  coordinates: Coordinates
+}
+
+type MapDetails {
+  radius: Float
+  zoom: Int
+}
+
+type Address {
+  street: Street
+  city: City
+  province: Province
+  county: County
+}
+
+type Street {
+  name: String
+  number: String
+}
+
+type City {
+  id: ID
+  code: String
+  name: String
+}
+
+type Province {
+  id: ID
+  code: String
+  name: String
+}
+
+type County {
+  id: ID
+  code: String
+  name: String
+}
+
+type ReverseGeocoding {
+  locations: [Location]
+}
+
+type Location {
+  id: ID
+  fullName: String
+}
+
+type Image {
+  thumbnail: String
+  small: String
+  medium: String
+  large: String
+}
+
+type AgencyListingDetails {
+  id: ID
+  name: String
+  slug: String
+  imageUrl: String
+  type: String
+  brandingVisible: Boolean
+  highlightedAds: [ID]
+}
+
+type Money {
+  value: Float
+  currency: String
+}
+
+union AdvertResult = Advert | AdvertNotFound
+
+type AdvertNotFound {
+  message: String
+}
+
+type Advert {
+  id: ID
+  market: String
+  publicId: String
+  slug: String
+  advertiserType: String
+  advertType: String
+  source: String
+  createdAt: String
+  modifiedAt: String
+  description: String
+  developmentId: ID
+  developmentTitle: String
+  developmentUrl: String
+  exclusiveOffer: Boolean
+  externalId: String
+  features: [String]
+  featuresByCategory: [FeatureCategory]
+  referenceId: String
+  title: String
+  topInformation: [Information]
+  additionalInformation: [Information]
+  url: String
+  status: String
+  adCategory: AdvertCategory
+  category: AdCategory
+  characteristics: [Characteristic]
+  images: [Image]
+  links: AdvertLinks
+  location: AdvertLocation
+  owner: LegacyAdvertOwner
+  agency: AdvertAgency
+  seo: AdvertSeo
+  breadcrumbs: [Breadcrumb]
+  userAdverts: [UserAdvert]
+
+  locationDetails: LocationDetails
+}
+
+type FeatureCategory {
+  label: String
+  values: [String]
+}
+
+type Information {
+  label: String
+  values: [String]
+  unit: String
+}
+
+type AdvertCategory {
+  id: ID
+  name: String
+  type: String
+}
+
+type AdCategory {
+  id: ID
+  name: LocalizedName
+}
+
+type LocalizedName {
+  locale: String
+  value: String
+}
+
+type Characteristic {
+  key: String
+  value: String
+  label: String
+  localizedValue: String
+  currency: String
+  suffix: String
+}
+
+type AdvertLinks {
+  localPlanUrl: String
+  videoUrl: String
+  view3dUrl: String
+  walkaroundUrl: String
+}
+
+type AdvertLocation {
+  coordinates: AdvertCoordinates
+  address: Address
+}
+
+type AdvertCoordinates {
+  latitude: Float
+  longitude: Float
+}
+
+type LegacyAdvertOwner {
+  id: ID
+  name: String
+  type: String
+  phones: [String]
+  imageUrl: String
+}
+
+type AdvertAgency {
+  id: ID
+  name: String
+  licenseNumber: String
+  type: String
+  phones: [String]
+  address: String
+  imageUrl: String
+  url: String
+  leaderYear: String
+  brandingVisible: Boolean
+  enabledFeatures: [String]
+}
+
+type AdvertSeo {
+  title: String
+  description: String
+}
+
+type Breadcrumb {
+  label: String
+  locative: String
+  url: String
+}
+
+type UserAdvert {
+  adId: ID
+  url: String
+  image: String
+  roomsNum: Int
+  pricePerM: Float
+  price: UserAdvertPrice
+  netArea: Float
+  title: String
+}
+
+type UserAdvertPrice {
+  value: Float
+  unit: String
+}
+
+type Coordinates {
+  latitude: Float
+  longitude: Float
+}

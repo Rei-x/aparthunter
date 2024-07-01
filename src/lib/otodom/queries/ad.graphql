@@ -1,0 +1,7 @@
+query Advert($id: ID!) {
+  advert(id: $id) {
+    ... on Advert {
+      id
+    }
+  }
+}

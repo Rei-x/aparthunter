@@ -1,0 +1,9 @@
+query SearchAds {
+  searchAds(lang: PL, page: { current: 1, limit: 40 }) {
+    ... on FoundAds {
+      items {
+        id
+      }
+    }
+  }
+}

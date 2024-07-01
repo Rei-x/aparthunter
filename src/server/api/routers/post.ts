@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import "@/worker";
+import { saleQueue } from "@/server/workers/sale";
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
@@ -14,7 +15,7 @@ export const postRouter = createTRPCRouter({
   addJob: publicProcedure
     .input(z.object({ name: z.string() }))
     .mutation(async ({ input }) => {
-      // await (await queue()).addJob("hello", { name: input.name });
+      await saleQueue.add("saleApartment", {});
     }),
 
   create: publicProcedure

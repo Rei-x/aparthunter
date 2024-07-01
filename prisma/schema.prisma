@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["tracing"]
 }
 
 datasource db {
@@ -10,18 +11,119 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@index([name])
+enum ConstructionStatus {
+    ToRenovation
+    ReadyToUse
+    Unknown
 }
 
-model Apartment {
-    id   Int    @id @default(autoincrement())
-    name String
+enum Heating {
+    Urban
+    Gas
+    Unknown
+}
 
-    @@index([name])
+enum Market {
+    Secondary
+    New
+    Unknown
+}
+
+enum Status {
+    Active
+    Inactive
+}
+
+model Point {
+    id            String          @id @default(cuid())
+    latitude      Float
+    longitude     Float
+    SaleApartment SaleApartment[]
+}
+
+model PhoneNumber {
+    phoneNumber String  @id
+    Owner       Owner[]
+}
+
+enum OwnerType {
+    Agency
+    Private
+}
+
+model Owner {
+    id           String        @id @default(cuid())
+    name         String
+    phoneNumbers PhoneNumber[]
+    type         OwnerType
+    externalId   String
+    url          String?
+}
+
+model SaleApartment {
+    id                    String             @id @default(cuid())
+    externalId            String
+    title                 String
+    url                   String             @unique
+    location              String
+    price                 Int
+    description           String
+    coordinates           Point              @relation(fields: [pointId], references: [id], onDelete: Cascade)
+    cityId                Int
+    City                  City               @relation(fields: [cityId], references: [id])
+    numberOfRoomsOrPeople Int
+    isRoom                Boolean            @default(false)
+    area                  Int
+    constructionStatus    ConstructionStatus
+    floor                 Int?
+    buildingFloors        Int?
+    rent                  Int?
+    heating               Heating
+    market                Market
+    buildYear             Int?
+    buildingType          String?
+    windowsType           String?
+    entryPhone            Boolean?
+    furniture             Boolean?
+    balcony               Boolean?
+    fridge                Boolean?
+    lift                  Boolean?
+    separateKitchen       Boolean?
+    offerDate             DateTime?
+    status                Status
+    province              String?
+    createdAt             DateTime?          @default(now())
+    updatedAt             DateTime?          @default(now())
+    pointId               String
+}
+    // "domofon / wideofon",
+    //   "lodówka",
+    //   "meble",
+    //   "kuchenka",
+    //   "pralka",
+    //   "balkon"
+model RentApartment {
+    id                    String    @id @default(cuid())
+    title                 String
+    url                   String    @unique
+    location              String
+    price                 Int
+    description           String
+    cityId                Int
+    City                  City      @relation(fields: [cityId], references: [id])
+    numberOfRoomsOrPeople Int
+    isRoom                Boolean   @default(false)
+    area                  Int
+    offerDate             DateTime?
+    createdAt             DateTime? @default(now())
+    updatedAt             DateTime? @default(now())
+}
+
+model City {
+    id             Int             @id @default(autoincrement())
+    name           String
+    createdAt      DateTime        @default(now())
+    updatedAt      DateTime        @default(now())
+    RentApartments RentApartment[]
+    SaleApartment  SaleApartment[]
 }
