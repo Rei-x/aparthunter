@@ -8,9 +8,10 @@
     "db:generate": "prisma migrate dev",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
+    "setup": "tsx ./src/setup.ts",
     "test": "vitest",
     "db:studio": "prisma studio",
-    "dev": "tsx watch -r dotenv/config src/server.ts  --project tsconfig.server.json ",
+    "dev": "pnpm run setup && tsx watch -r dotenv/config src/server.ts  --project tsconfig.server.json ",
     "postinstall": "prisma generate",
     "lint": "next lint",
     "start": "NODE_ENV=production node ./dist/server.js",
@@ -77,6 +78,7 @@
     "lucide-react": "^0.399.0",
     "next": "^14.2.1",
     "next-themes": "^0.3.0",
+    "nuqs": "^1.17.4",
     "postgraphile": "^4.13.0",
     "react": "^18.3.0",
     "react-day-picker": "^8.10.1",
@@ -93,6 +95,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^5.0.3",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/client-preset": "4.3.1",
     "@graphql-codegen/introspection": "4.0.3",
@@ -110,12 +113,12 @@
     "eslint-config-next": "^14.1.3",
     "inquirer": "^9.3.2",
     "postcss": "^8.4.34",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "prisma": "^5.16.1",
     "tailwindcss": "^3.4.3",
     "tsx": "^4.15.6",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.3",
     "vitest": "^1.6.0"
   },
   "ct3aMetadata": {

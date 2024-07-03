@@ -4,7 +4,7 @@ schema {
 
 type Query {
   searchAds(lang: Language, page: PageInput, sort: SortInput): SearchResult
-  advert(id: ID!): AdvertResult
+  advert(id: Int64!): AdvertResult
 }
 
 enum Language {
@@ -27,20 +27,18 @@ enum SortDirection {
   DESC
 }
 
-union SearchResult = FoundAds | NotFound
+scalar Int64
+
+union SearchResult = FoundAds
 
 type FoundAds {
   items: [AdItem]
   locationString: String
 }
 
-type NotFound {
-  message: String
-}
-
 type AdItem {
   id: ID
-  title: String
+  title: String!
   slug: String
   createdAt: String
   estate: String
@@ -141,11 +139,7 @@ type Money {
   currency: String
 }
 
-union AdvertResult = Advert | AdvertNotFound
-
-type AdvertNotFound {
-  message: String
-}
+union AdvertResult = Advert
 
 type Advert {
   id: ID
@@ -205,7 +199,7 @@ type AdvertCategory {
 
 type AdCategory {
   id: ID
-  name: LocalizedName
+  name: [LocalizedName]
 }
 
 type LocalizedName {

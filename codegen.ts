@@ -5,11 +5,16 @@ const config: CodegenConfig = {
   schema: "./schema.graphql",
   documents: "src/**/*.graphql",
   generates: {
-    "src/gql/sdk.ts": {
+    "src/gql/sdk.generated.ts": {
       plugins: [
         "typescript",
         "typescript-operations",
         "typescript-generic-sdk",
+        {
+          add: {
+            content: "/* eslint-disable */",
+          },
+        },
       ],
     },
   },

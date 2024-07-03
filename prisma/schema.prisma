@@ -14,19 +14,16 @@ datasource db {
 enum ConstructionStatus {
     ToRenovation
     ReadyToUse
-    Unknown
 }
 
 enum Heating {
     Urban
     Gas
-    Unknown
 }
 
 enum Market {
     Secondary
     New
-    Unknown
 }
 
 enum Status {
@@ -49,37 +46,44 @@ model PhoneNumber {
 enum OwnerType {
     Agency
     Private
+    Developer
+}
+
+model Image {
+    id              String        @id @default(cuid())
+    url             String
+    SaleApartment   SaleApartment @relation(fields: [saleApartmentId], references: [id])
+    saleApartmentId String
 }
 
 model Owner {
-    id           String        @id @default(cuid())
-    name         String
-    phoneNumbers PhoneNumber[]
-    type         OwnerType
-    externalId   String
-    url          String?
+    externalId    String          @id
+    name          String
+    phoneNumbers  PhoneNumber[]
+    type          OwnerType
+    url           String?
+    SaleApartment SaleApartment[]
 }
 
 model SaleApartment {
-    id                    String             @id @default(cuid())
+    id                    String              @id @default(cuid())
     externalId            String
     title                 String
-    url                   String             @unique
+    url                   String              @unique
     location              String
-    price                 Int
+    price                 Int?
     description           String
-    coordinates           Point              @relation(fields: [pointId], references: [id], onDelete: Cascade)
-    cityId                Int
-    City                  City               @relation(fields: [cityId], references: [id])
+    coordinates           Point?              @relation(fields: [pointId], references: [id], onDelete: Cascade)
+    City                  City                @relation(fields: [cityName], references: [name])
     numberOfRoomsOrPeople Int
-    isRoom                Boolean            @default(false)
+    isRoom                Boolean             @default(false)
     area                  Int
-    constructionStatus    ConstructionStatus
+    constructionStatus    ConstructionStatus?
     floor                 Int?
     buildingFloors        Int?
     rent                  Int?
-    heating               Heating
-    market                Market
+    heating               Heating?
+    market                Market?
     buildYear             Int?
     buildingType          String?
     windowsType           String?
@@ -92,16 +96,15 @@ model SaleApartment {
     offerDate             DateTime?
     status                Status
     province              String?
-    createdAt             DateTime?          @default(now())
-    updatedAt             DateTime?          @default(now())
-    pointId               String
+    createdAt             DateTime?           @default(now())
+    updatedAt             DateTime?           @default(now())
+    pointId               String?
+    cityName              String
+    owner                 Owner               @relation(fields: [ownerId], references: [externalId])
+    ownerId               String
+    Images                Image[]
 }
-    // "domofon / wideofon",
-    //   "lodówka",
-    //   "meble",
-    //   "kuchenka",
-    //   "pralka",
-    //   "balkon"
+
 model RentApartment {
     id                    String    @id @default(cuid())
     title                 String
@@ -109,19 +112,18 @@ model RentApartment {
     location              String
     price                 Int
     description           String
-    cityId                Int
-    City                  City      @relation(fields: [cityId], references: [id])
+    City                  City      @relation(fields: [cityName], references: [name])
     numberOfRoomsOrPeople Int
     isRoom                Boolean   @default(false)
     area                  Int
     offerDate             DateTime?
     createdAt             DateTime? @default(now())
     updatedAt             DateTime? @default(now())
+    cityName              String
 }
 
 model City {
-    id             Int             @id @default(autoincrement())
-    name           String
+    name           String          @id
     createdAt      DateTime        @default(now())
     updatedAt      DateTime        @default(now())
     RentApartments RentApartment[]
