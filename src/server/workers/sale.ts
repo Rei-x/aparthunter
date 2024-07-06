@@ -1,4 +1,3 @@
-import { env } from "@/env";
 import type { Characteristic } from "@/gql/sdk.generated";
 import { createApartment } from "@/lib/createApartment";
 import { createJob } from "@/lib/createJob";
@@ -71,6 +70,7 @@ const castOwnerTypeToEnum = (type: string) => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const castConstructionTypeToEnum = (type: string) => {
   switch (type) {
     case "ready_to_use":
@@ -151,7 +151,19 @@ export const { worker: saleWorkerSingle, queue: saleQueueSingle } = createJob(
 
     const categoryId = advert.category?.id?.toString();
 
-    const ignoredCategoriesIDs = ["102", "402", "602", "401", "502", "501"];
+    const ignoredCategoriesIDs = [
+      "102",
+      "202",
+      "302",
+      "402",
+      "602",
+      "401",
+      "601",
+      "502",
+      "501",
+      "701",
+      "702",
+    ];
 
     if (ignoredCategoriesIDs.includes(categoryId ?? "")) {
       return {

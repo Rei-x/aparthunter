@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+dist
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
