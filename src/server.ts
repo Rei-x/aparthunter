@@ -53,6 +53,8 @@ void app
       const repeatableQueues = [saleQueue];
 
       if (env.NODE_ENV === "production") {
+        console.log("Setting up repeatable jobs");
+
         await Promise.all(
           repeatableQueues.map(async (queue) => {
             const jobs = await queue.getRepeatableJobs();
