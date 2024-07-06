@@ -311,12 +311,19 @@ export type ReverseGeocoding = {
 
 export type SearchResult = FoundAds;
 
+export enum SortBy {
+  Area = 'AREA',
+  Latest = 'LATEST',
+  Price = 'PRICE'
+}
+
 export enum SortDirection {
   Asc = 'ASC',
   Desc = 'DESC'
 }
 
 export type SortInput = {
+  by?: InputMaybe<SortBy>;
   direction?: InputMaybe<SortDirection>;
 };
 
@@ -441,7 +448,11 @@ export const AdvertDocument = gql`
     `;
 export const SearchAdsDocument = gql`
     query SearchAds {
-  searchAds(lang: PL, page: {current: 1, limit: 40}, sort: {direction: DESC}) {
+  searchAds(
+    lang: PL
+    page: {current: 1, limit: 40}
+    sort: {direction: DESC, by: LATEST}
+  ) {
     ... on FoundAds {
       items {
         id

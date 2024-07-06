@@ -20,11 +20,18 @@ input PageInput {
 
 input SortInput {
   direction: SortDirection
+  by: SortBy
 }
 
 enum SortDirection {
   ASC
   DESC
+}
+
+enum SortBy {
+  LATEST
+  PRICE
+  AREA
 }
 
 scalar Int64
