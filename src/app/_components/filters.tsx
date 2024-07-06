@@ -62,7 +62,13 @@ export const Filters = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [router, filters, setFilters]);
+  }, [
+    filters.city,
+    filters.minPrice,
+    filters.maxPrice,
+    filters.sortBy,
+    filters.q,
+  ]);
 
   return (
     <div>
