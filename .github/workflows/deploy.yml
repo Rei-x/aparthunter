@@ -40,3 +40,6 @@ jobs:
           cache-from: type=registry,ref=ghcr.io/rei-x/aparthunter:latest
           cache-to: type=inline
           network: host
+      - name: Trigger build
+        run: |
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
