@@ -49,10 +49,11 @@ export const createJob = <
         connection: redis,
         autorun: false,
         removeOnComplete: {
-          count: 5000,
+          count: 100,
+          age: 60,
         },
         removeOnFail: {
-          count: 5000,
+          count: 100,
         },
         ...options?.workerOptions,
       },
