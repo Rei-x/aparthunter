@@ -10,6 +10,9 @@ jobs:
   build-lint:
     name: Build and Lint
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/aparthunter
+      REDIS_URL: redis://localhost:6379
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Checkout repo
