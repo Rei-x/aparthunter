@@ -7,6 +7,7 @@ import { queues, workers } from "./worker";
 import { ExpressAdapter } from "@bull-board/express";
 import { createBullBoard } from "@bull-board/api";
 import { BullMQAdapter } from "@bull-board/api/bullMQAdapter.js";
+import { saleQueue } from "./server/workers/sale";
 
 const app = next({ dev: env.NODE_ENV === "development" });
 const handle = app.getRequestHandler();
@@ -32,7 +33,7 @@ void app
     });
 
     const port = process.env.PORT ?? 3000;
-    server.listen(port, (err?: unknown) => {
+    server.listen(port, async (err?: unknown) => {
       // eslint-disable-next-line @typescript-eslint/only-throw-error
       if (err) throw err;
       console.log(`> Ready on http://localhost:${port.toString()}`);
@@ -48,6 +49,30 @@ void app
             process.exit(1);
           });
       });
+
+      const repeatableQueues = [saleQueue];
+
+      if (env.NODE_ENV === "production") {
+        await Promise.all(
+          repeatableQueues.map(async (queue) => {
+            const jobs = await queue.getRepeatableJobs();
+
+            for (const job of jobs) {
+              await queue.removeRepeatableByKey(job.key);
+            }
+
+            await queue.add(
+              "saleApartment",
+              {},
+              {
+                repeat: {
+                  every: 20 * 1000,
+                },
+              },
+            );
+          }),
+        );
+      }
     });
   })
   .catch((error: unknown) => {
