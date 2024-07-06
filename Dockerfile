@@ -1,5 +1,5 @@
 # Etapa 1: Prepare image for building
-FROM node:18-alpine AS base
+FROM node:22-alpine AS base
 
 LABEL org.opencontainers.image.source=https://github.com/Rei-x/aparthunter
 LABEL org.opencontainers.image.description="Aparthunter is a web application that allows users to search for apartments. It was developed using Next.js, Prisma, and PostgreSQL."
@@ -27,7 +27,7 @@ RUN pnpm run generate
 RUN pnpm run build
 
 # Stage 2: Prepare image for production
-FROM node:18-alpine AS production
+FROM node:22-alpine AS production
 
 # Install dependencies only for production
 ENV PNPM_HOME="/pnpm"
