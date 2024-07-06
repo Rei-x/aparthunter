@@ -48,6 +48,12 @@ export const createJob = <
       {
         connection: redis,
         autorun: false,
+        removeOnComplete: {
+          count: 5000,
+        },
+        removeOnFail: {
+          count: 5000,
+        },
         ...options?.workerOptions,
       },
     ),
