@@ -66,7 +66,7 @@ void app
               {},
               {
                 repeat: {
-                  every: 20 * 1000,
+                  every: 60 * 1000,
                 },
               },
             );
