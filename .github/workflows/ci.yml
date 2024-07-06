@@ -13,7 +13,6 @@ jobs:
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/aparthunter
       REDIS_URL: redis://localhost:6379
-    if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
