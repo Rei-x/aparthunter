@@ -103,6 +103,11 @@ model SaleApartment {
     owner                 Owner               @relation(fields: [ownerId], references: [externalId])
     ownerId               String
     Images                Image[]
+
+    @@index([cityName])
+    @@index([price])
+    @@index([url])
+    @@index([createdAt])
 }
 
 model RentApartment {
