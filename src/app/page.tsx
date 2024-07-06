@@ -127,12 +127,12 @@ export default async function Home({
                 <p className="text-gray-700">
                   {[
                     apart.numberOfRoomsOrPeople > 0
-                      ? `${apart.numberOfRoomsOrPeople} pokoje`
+                      ? `${apart.numberOfRoomsOrPeople.toString()} pokoje`
                       : null,
-                    apart.area ? `${apart.area} m²` : null,
-                    apart.price ? `${apart.price} zł` : null,
+                    apart.area ? `${apart.area.toString()} m²` : null,
+                    apart.price ? `${apart.price.toString()} zł` : null,
                     apart.market ? apart.market : null,
-                    apart.floor ? `${apart.floor} piętro` : null,
+                    apart.floor ? `${apart.floor.toString()} piętro` : null,
                     apart.buildingType ? apart.buildingType : null,
                   ]
                     .filter((x) => x)

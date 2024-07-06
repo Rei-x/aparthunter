@@ -6,9 +6,9 @@ const result = dotenv.config({ path: ".env.production" });
 
 function prepareDefine(config: DotenvParseOutput | undefined) {
   const define = {};
-  // @ts-expect-error ?? żelo
+  // @ts-expect-error ?? żelo oooo
   for (const [key, value] of Object.entries(config)) {
-    // @ts-expect-error ?? żelo
+    // @ts-expect-error ?? żelo ooo
     define[`process.env.${key}`] = JSON.stringify(value);
   }
   return define;

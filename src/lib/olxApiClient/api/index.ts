@@ -113,8 +113,8 @@ export const apiClient = {
         limit?: number;
       },
     ) => {
-      const url = `${baseApi}/geo-encoder/regions/${regionId}/cities/?limit=${
-        options?.limit ?? 300
+      const url = `${baseApi}/geo-encoder/regions/${regionId.toString()}/cities/?limit=${
+        options?.limit?.toString() ?? "300"
       }`;
 
       const res = await fetchData(url);

@@ -140,8 +140,8 @@ export const { worker: saleWorkerSingle, queue: saleQueueSingle } = createJob(
     let point = null;
 
     if (
-      advert.locationDetails?.coordinates?.latitude &&
-      advert.locationDetails?.coordinates?.longitude
+      advert.locationDetails.coordinates?.latitude &&
+      advert.locationDetails.coordinates.longitude
     ) {
       point = {
         latitude: advert.locationDetails.coordinates.latitude,
@@ -167,7 +167,7 @@ export const { worker: saleWorkerSingle, queue: saleQueueSingle } = createJob(
 
     if (ignoredCategoriesIDs.includes(categoryId ?? "")) {
       return {
-        message: `Advert is in ignored category: ${categoryId}`,
+        message: `Advert is in ignored category: ${categoryId ?? ""}`,
       };
     }
 
@@ -178,7 +178,7 @@ export const { worker: saleWorkerSingle, queue: saleQueueSingle } = createJob(
       categoryId !== "201"
     ) {
       throw new Error(
-        `Advert is not a sale apartment, but a ${advert.category?.name?.at(0)?.value ?? ""}:{${advert.category?.id}}`,
+        `Advert is not a sale apartment, but a ${advert.category?.name?.at(0)?.value ?? ""}:{${advert.category?.id ?? ""}}`,
       );
     }
 
@@ -226,14 +226,14 @@ export const { worker: saleWorkerSingle, queue: saleQueueSingle } = createJob(
         : undefined,
       status: $Enums.Status.Active,
       buildingType: characteristics.building_type,
-      location: `${advert.locationDetails.address.street?.name ?? ""}${advert.locationDetails.address.street?.number ? ` ${advert.locationDetails.address.street?.number}` : ""}`,
+      location: `${advert.locationDetails.address.street?.name ?? ""}${advert.locationDetails.address.street?.number ? ` ${advert.locationDetails.address.street.number}` : ""}`,
       City: {
         connectOrCreate: {
           create: {
-            name: advert.locationDetails?.address?.city?.name,
+            name: advert.locationDetails.address.city.name,
           },
           where: {
-            name: advert.locationDetails?.address?.city?.name,
+            name: advert.locationDetails.address.city.name,
           },
         },
       },
@@ -242,7 +242,7 @@ export const { worker: saleWorkerSingle, queue: saleQueueSingle } = createJob(
           data:
             advert.images
               ?.map((image) => image?.large)
-              ?.filter((image) => typeof image === "string")
+              .filter((image) => typeof image === "string")
               .map((image) => ({
                 url: image,
               })) ?? [],

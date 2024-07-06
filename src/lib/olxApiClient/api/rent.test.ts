@@ -31,6 +31,8 @@ describe("api test", () => {
 
     const offer = offers.data[0];
 
-    await expect(offer).toMatchFileSnapshot(`offer-${offer.id}.json`);
+    await expect(offer).toMatchFileSnapshot(
+      `offer-${offer?.id.toString() ?? ""}.json`,
+    );
   });
 });

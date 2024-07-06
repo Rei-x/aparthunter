@@ -21,7 +21,7 @@ void app
 
     createBullBoard({
       queues: queues().map((queue) => new BullMQAdapter(queue)),
-      // @ts-expect-error wtf
+      // @ts-expect-error wtf this is
       serverAdapter,
     });
 
@@ -33,8 +33,9 @@ void app
 
     const port = process.env.PORT ?? 3000;
     server.listen(port, (err?: unknown) => {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error
       if (err) throw err;
-      console.log(`> Ready on http://localhost:${port}`);
+      console.log(`> Ready on http://localhost:${port.toString()}`);
 
       workers().forEach((worker) => {
         worker
@@ -42,16 +43,14 @@ void app
           .then(() => {
             console.log(`${worker.name} worker is running`);
           })
-          .catch((error) => {
+          .catch((error: unknown) => {
             console.error(`${worker.name} worker failed to run`, error);
             process.exit(1);
           });
       });
     });
   })
-  .catch((error) => {
+  .catch((error: unknown) => {
     console.error("An error occurred, exiting", error);
     process.exit(1);
   });
-
-

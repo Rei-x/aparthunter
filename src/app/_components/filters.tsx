@@ -56,7 +56,7 @@ export const Filters = () => {
   const router = useRouter();
   useEffect(() => {
     const timeout = setTimeout(() => {
-      void router.refresh();
+      router.refresh();
     }, 500);
 
     return () => {
@@ -77,7 +77,7 @@ export const Filters = () => {
               placeholder="Wyszukaj..."
               value={filters.q}
               onChange={(e) =>
-                setFilters((prev) => ({ ...prev, q: e.target.value }))
+                void setFilters((prev) => ({ ...prev, q: e.target.value }))
               }
               className="w-full py-3 pl-10 pr-4 text-lg"
             />
@@ -152,7 +152,7 @@ export const Filters = () => {
                                       : "opacity-0",
                                   )}
                                 />
-                                {city.name} - {city._count?.SaleApartment}
+                                {city.name} - {city._count.SaleApartment}
                               </CommandItem>
                             ))}
                           </CommandGroup>
@@ -190,7 +190,7 @@ export const Filters = () => {
                       variant="outline"
                       disabled={filters.sortBy === Sort.offerDate}
                       onClick={() =>
-                        setFilters((prev) => ({
+                        void setFilters((prev) => ({
                           ...prev,
                           sortBy: Sort.offerDate,
                         }))
@@ -203,7 +203,7 @@ export const Filters = () => {
                       disabled={filters.sortBy === Sort.price}
                       variant="outline"
                       onClick={() =>
-                        setFilters((prev) => ({
+                        void setFilters((prev) => ({
                           ...prev,
                           sortBy: Sort.price,
                         }))

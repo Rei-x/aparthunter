@@ -40,7 +40,7 @@ export const createJob = <
       TName
     >(
       name,
-      // @ts-expect-error wtf
+      // @ts-expect-error wtf asdsadas
       async (job) => {
         input.parse(job.data);
         return processor(job) as Promise<Awaited<ReturnType<TProcessor>>>;
