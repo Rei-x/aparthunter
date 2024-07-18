@@ -1,6 +1,9 @@
-import { runDb, migrateDbUsingPrisma } from "./scripts/db";
-import { runRedis } from "./scripts/redis";
+import { $ } from "execa";
+import { withServices } from "./scripts/withServices";
+import { repoRoot } from "./scripts/repoRoot";
 
-await runDb();
-await migrateDbUsingPrisma();
-await runRedis();
+const $$ = $({ stdio: "inherit", cwd: repoRoot });
+
+await withServices(async () => {
+  await $$`pnpm db:push`;
+});

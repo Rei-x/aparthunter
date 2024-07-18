@@ -19,7 +19,7 @@ importers:
         version: 5.21.0
       '@graphile/pg-pubsub':
         specifier: ^4.13.0
-        version: 4.13.0(graphile-build@4.13.0(graphql@15.8.0))(graphql@16.9.0)(postgraphile@4.13.0)
+        version: 4.13.0(graphile-build@4.13.0(graphql@16.9.0))(graphql@16.9.0)(postgraphile@4.13.0)
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.9.0)
@@ -239,6 +239,9 @@ importers:
       vaul:
         specifier: ^0.9.1
         version: 0.9.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      yaml:
+        specifier: ^2.4.5
+        version: 2.4.5
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -291,6 +294,9 @@ importers:
       '@types/superagent':
         specifier: ^8.1.7
         version: 8.1.7
+      '@types/yaml':
+        specifier: ^1.9.7
+        version: 1.9.7
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.16.1
         version: 7.16.1(@typescript-eslint/parser@7.16.1(eslint@9.7.0)(typescript@5.5.3))(eslint@9.7.0)(typescript@5.5.3)
@@ -2789,6 +2795,10 @@ packages:
 
   '@types/ws@8.5.10':
     resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+
+  '@types/yaml@1.9.7':
+    resolution: {integrity: sha512-8WMXRDD1D+wCohjfslHDgICd2JtMATZU8CkhH8LVJqcJs6dyYj5TGptzP8wApbmEullGBSsCEzzap73DQ1HJaA==}
+    deprecated: This is a stub types definition. yaml provides its own type definitions, so you do not need this installed.
 
   '@typescript-eslint/eslint-plugin@7.16.1':
     resolution: {integrity: sha512-SxdPak/5bO0EnGktV05+Hq8oatjAYVY3Zh2bye9pGZy6+jwyR3LG3YKkV4YatlsgqXP28BTeVm9pqwJM96vf2A==}
@@ -7499,7 +7509,7 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  '@graphile/pg-pubsub@4.13.0(graphile-build@4.13.0(graphql@15.8.0))(graphql@16.9.0)(postgraphile@4.13.0)':
+  '@graphile/pg-pubsub@4.13.0(graphile-build@4.13.0(graphql@16.9.0))(graphql@16.9.0)(postgraphile@4.13.0)':
     dependencies:
       '@types/debug': 4.1.12
       '@types/pg': 8.11.6
@@ -9587,6 +9597,10 @@ snapshots:
   '@types/ws@8.5.10':
     dependencies:
       '@types/node': 20.14.11
+
+  '@types/yaml@1.9.7':
+    dependencies:
+      yaml: 2.4.5
 
   '@typescript-eslint/eslint-plugin@7.16.1(@typescript-eslint/parser@7.16.1(eslint@9.7.0)(typescript@5.5.3))(eslint@9.7.0)(typescript@5.5.3)':
     dependencies:
