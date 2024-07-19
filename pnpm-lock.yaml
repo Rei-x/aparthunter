@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@bull-board/api':
-        specifier: ^5.21.0
-        version: 5.21.0(@bull-board/ui@5.21.0)
+        specifier: ^5.21.1
+        version: 5.21.1(@bull-board/ui@5.21.1)
       '@bull-board/express':
-        specifier: ^5.21.0
-        version: 5.21.0
+        specifier: ^5.21.1
+        version: 5.21.1
       '@bull-board/ui':
-        specifier: ^5.21.0
-        version: 5.21.0
+        specifier: ^5.21.1
+        version: 5.21.1
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.9.0)
@@ -114,20 +114,20 @@ importers:
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
       '@tanstack/react-query':
-        specifier: ^5.51.5
-        version: 5.51.5(react@18.3.1)
+        specifier: ^5.51.9
+        version: 5.51.9(react@18.3.1)
       '@trpc/client':
         specifier: next
         version: 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
       '@trpc/react-query':
         specifier: next
-        version: 11.0.0-rc.466(@tanstack/react-query@5.51.5(react@18.3.1))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 11.0.0-rc.466(@tanstack/react-query@5.51.9(react@18.3.1))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@trpc/server':
         specifier: next
         version: 11.0.0-rc.466
       bullmq:
-        specifier: ^5.10.0
-        version: 5.10.0
+        specifier: ^5.10.1
+        version: 5.10.1
       chalk:
         specifier: ^5.3.0
         version: 5.3.0
@@ -207,8 +207,8 @@ importers:
         specifier: ^7.52.1
         version: 7.52.1(react@18.3.1)
       react-resizable-panels:
-        specifier: ^2.0.20
-        version: 2.0.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^2.0.21
+        version: 2.0.21(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
@@ -636,16 +636,16 @@ packages:
     resolution: {integrity: sha512-XEFXSlxiG5td2EJRe8vOmRbaXVgfcBlszKujvVmWIK/UpywWljQCfzAv3RQCGujWQ1RD4YYWEAqDXfuJiy8f5Q==}
     engines: {node: '>=6.9.0'}
 
-  '@bull-board/api@5.21.0':
-    resolution: {integrity: sha512-27tjptwgRgP1G5jT+POjiZZOP3LgdIM4XdfEWfa6t5E0CYImL4EjmdiFo5lhbHhYKZ842VhIpHuNcPk8nY3K9A==}
+  '@bull-board/api@5.21.1':
+    resolution: {integrity: sha512-anzTfhOJ93eraT/GYeyxWpxRMarHwuevn6pPBfdOj0LC2eg98OPnkfdMSjcrpL3qrqsxON0RslS7kuPfCEnX6A==}
     peerDependencies:
-      '@bull-board/ui': 5.21.0
+      '@bull-board/ui': 5.21.1
 
-  '@bull-board/express@5.21.0':
-    resolution: {integrity: sha512-iBPBJq8KYebYrN4YvdSvEfOxjYYJfWycilAfNDSikyI3rJKOBRq34BmDnQj6Jn1ytssBb+vvZ35+bCSbbhFB3w==}
+  '@bull-board/express@5.21.1':
+    resolution: {integrity: sha512-wr232JAv21NDSAhnb60MgY7dZ4FfMwKy01h6Jdkhb5y+B/P1fBY+rPOfK4DEtD0KroDg0mXdhqxD/ZodqN2NPg==}
 
-  '@bull-board/ui@5.21.0':
-    resolution: {integrity: sha512-eH8QQwIHgCXxNEmlg9EZr3fSvno/bdbgBGfSQO5s9c9n9eDEaKX46ambKSPvgFPtwSdiV1AYQEa/3fGSebVIxg==}
+  '@bull-board/ui@5.21.1':
+    resolution: {integrity: sha512-JBDeCqG7j/c3WE0uGMN9snPkRJz9/D6MpTZzyVj7KOxIJwNKPOICNFZbCrCNi7bcJYHDJ2xGTN9OO1mw7i43BQ==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -2619,11 +2619,11 @@ packages:
       typescript:
         optional: true
 
-  '@tanstack/query-core@5.51.5':
-    resolution: {integrity: sha512-qovOto6hFet2zA4Pf3cDO+qkOqskO6xP39PlKnr6YKPtjRsePWyZnTaMf59+VnlOLY8gpku1I4WPC4dqBXo4FQ==}
+  '@tanstack/query-core@5.51.9':
+    resolution: {integrity: sha512-HsAwaY5J19MD18ykZDS3aVVh+bAt0i7m6uQlFC2b77DLV9djo+xEN7MWQAQQTR8IM+7r/zbozTQ7P0xr0bHuew==}
 
-  '@tanstack/react-query@5.51.5':
-    resolution: {integrity: sha512-jaYYPGF55HT3DSV2NxFHa7zGRUm6LiRENw1rspkzqNiOU93umP5YCdE/l4S61/ZdLnjzwYIM4FU96EQt+imq5Q==}
+  '@tanstack/react-query@5.51.9':
+    resolution: {integrity: sha512-F8j6i42wfKvFrRcxfOyFyYME+bPfNthAGOSkjdv4UwZZXJjnBnBs/yRQGT0bD23LVCTuBzlIfZ0GKSIyclZ9rQ==}
     peerDependencies:
       react: ^18.0.0
 
@@ -3166,8 +3166,8 @@ packages:
   buffer@6.0.3:
     resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
 
-  bullmq@5.10.0:
-    resolution: {integrity: sha512-bu8lGvgXLwMhBrKeE0ntH+IWBZFVISJBm5njYtPL8u9Qm3AekEONinKRftiIP66r/Y45ljxg9dp9EahoJ6L9wA==}
+  bullmq@5.10.1:
+    resolution: {integrity: sha512-YSRRua/Heol8++QB1HVovJxKZ/+RXziG+1XW3c0k1TwKRG4E4oqYB8uI6D/7tbEvivTRcpixPJ3+IhsvvnHgxA==}
 
   busboy@1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
@@ -4665,8 +4665,8 @@ packages:
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
 
-  jake@10.9.1:
-    resolution: {integrity: sha512-61btcOHNnLnsOdtLgA5efqQWjnSi/vow5HbI7HMdKKWqvrKR1bLK3BPlJn9gcSaP2ewuamUSMB5XEy76KUIS2w==}
+  jake@10.9.2:
+    resolution: {integrity: sha512-2P4SQ0HrLQ+fw6llpLnOaGAvN2Zu6778SJMrCUwns4fOoG9ayrTiZk3VV8sCPkVZF8ab0zksVpS8FDY5pRCNBA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -5633,8 +5633,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-resizable-panels@2.0.20:
-    resolution: {integrity: sha512-aMbK3VF8U+VBICG+rwhE0Rr/eFZaRzmNq3akBRL1TrayIpLXz7Rbok0//kYeWj6SQRsjcQ3f4eRplJicM+oL6w==}
+  react-resizable-panels@2.0.21:
+    resolution: {integrity: sha512-rFRjZ2sJ+iut0hY+5NtIxoIRlQqTWqZ6rMNahaZeZDpRPQyg8xiKjrlvXMq52WswFwpg47GFJcxn7f9uAFnZsQ==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
@@ -7000,23 +7000,23 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  '@bull-board/api@5.21.0(@bull-board/ui@5.21.0)':
+  '@bull-board/api@5.21.1(@bull-board/ui@5.21.1)':
     dependencies:
-      '@bull-board/ui': 5.21.0
+      '@bull-board/ui': 5.21.1
       redis-info: 3.1.0
 
-  '@bull-board/express@5.21.0':
+  '@bull-board/express@5.21.1':
     dependencies:
-      '@bull-board/api': 5.21.0(@bull-board/ui@5.21.0)
-      '@bull-board/ui': 5.21.0
+      '@bull-board/api': 5.21.1(@bull-board/ui@5.21.1)
+      '@bull-board/ui': 5.21.1
       ejs: 3.1.10
       express: 4.19.2
     transitivePeerDependencies:
       - supports-color
 
-  '@bull-board/ui@5.21.0':
+  '@bull-board/ui@5.21.1':
     dependencies:
-      '@bull-board/api': 5.21.0(@bull-board/ui@5.21.0)
+      '@bull-board/api': 5.21.1(@bull-board/ui@5.21.1)
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -9129,11 +9129,11 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.3
 
-  '@tanstack/query-core@5.51.5': {}
+  '@tanstack/query-core@5.51.9': {}
 
-  '@tanstack/react-query@5.51.5(react@18.3.1)':
+  '@tanstack/react-query@5.51.9(react@18.3.1)':
     dependencies:
-      '@tanstack/query-core': 5.51.5
+      '@tanstack/query-core': 5.51.9
       react: 18.3.1
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
@@ -9142,9 +9142,9 @@ snapshots:
     dependencies:
       '@trpc/server': 11.0.0-rc.466
 
-  '@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.5(react@18.3.1))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.51.9(react@18.3.1))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@tanstack/react-query': 5.51.5(react@18.3.1)
+      '@tanstack/react-query': 5.51.9(react@18.3.1)
       '@trpc/client': 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
       '@trpc/server': 11.0.0-rc.466
       react: 18.3.1
@@ -9827,7 +9827,7 @@ snapshots:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
-  bullmq@5.10.0:
+  bullmq@5.10.1:
     dependencies:
       cron-parser: 4.9.0
       ioredis: 5.4.1
@@ -10410,7 +10410,7 @@ snapshots:
 
   ejs@3.1.10:
     dependencies:
-      jake: 10.9.1
+      jake: 10.9.2
 
   electron-to-chromium@1.4.816: {}
 
@@ -11711,7 +11711,7 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  jake@10.9.1:
+  jake@10.9.2:
     dependencies:
       async: 3.2.5
       chalk: 4.1.2
@@ -12643,7 +12643,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.3
 
-  react-resizable-panels@2.0.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-resizable-panels@2.0.21(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
