@@ -1,0 +1,25 @@
+include:
+  - docker-compose.yml
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3333:3333"
+    environment:
+      - TZ=UTC
+      - PORT=3333
+      - HOST=0.0.0.0
+      - LOG_LEVEL=info
+      - APP_KEY=hard-to-guess-string-that-is-not-secret-at-all
+      - SESSION_DRIVER=cookie
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_DATABASE=aparthunter
+      - QUEUE_REDIS_HOST=redis
+      - QUEUE_REDIS_PORT=6379
+      - QUEUE_REDIS_PASSWORD=

@@ -1,18 +1,6 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/aparthunter
-      REDIS_URL: redis://redis:6379
-    depends_on:
-      - db
-      - redis
   db:
-    image: postgres:13
+    image: postgres:16-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -20,7 +8,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres-2:/var/lib/postgresql/data
   redis:
     image: redis:6
     ports:
@@ -29,5 +17,5 @@ services:
       - redis:/data
 
 volumes:
-  postgres:
+  postgres-2:
   redis:

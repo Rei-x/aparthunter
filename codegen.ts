@@ -1,23 +1,26 @@
-import type { CodegenConfig } from "@graphql-codegen/cli";
+import type { CodegenConfig } from '@graphql-codegen/cli'
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "./schema.graphql",
-  documents: "src/**/*.graphql",
+  schema: './schema.graphql',
+  documents: 'app/**/*.graphql',
+  config: {
+    documentMode: 'documentNode',
+  },
   generates: {
-    "src/gql/sdk.generated.ts": {
+    'app/services/graphql.generated.ts': {
       plugins: [
-        "typescript",
-        "typescript-operations",
-        "typescript-generic-sdk",
+        'typescript',
+        'typescript-operations',
+        'typescript-graphql-request',
         {
           add: {
-            content: "/* eslint-disable */",
+            content: '/* eslint-disable */',
           },
         },
       ],
     },
   },
-};
+}
 
-export default config;
+export default config

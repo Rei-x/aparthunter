@@ -1,0 +1,168 @@
+import { BaseSchema } from '@adonisjs/lucid/schema'
+
+export default class extends BaseSchema {
+  protected tableName = 'sales_apartments'
+  // This is your Prisma schema file,
+  // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+  // generator client {
+  //   provider        = "prisma-client-js"
+  //   previewFeatures = ["tracing", "fullTextSearch"]
+  // }
+
+  // datasource db {
+  //   provider = "postgresql"
+  //   url      = env("DATABASE_URL")
+  // }
+
+  // enum ConstructionStatus {
+  //   ToRenovation
+  //   ReadyToUse
+  // }
+
+  // enum Heating {
+  //   Urban
+  //   Gas
+  // }
+
+  // enum Market {
+  //   Secondary
+  //   New
+  // }
+
+  // enum Status {
+  //   Active
+  //   Inactive
+  // }
+
+  // model Point {
+  //   id            String          @id @default(cuid())
+  //   latitude      Float
+  //   longitude     Float
+  //   SaleApartment SaleApartment[]
+  // }
+
+  // model PhoneNumber {
+  //   phoneNumber String  @id
+  //   Owner       Owner[]
+  // }
+
+  // enum OwnerType {
+  //   Agency
+  //   Private
+  //   Developer
+  // }
+
+  // model Image {
+  //   id              String        @id @default(cuid())
+  //   url             String
+  //   SaleApartment   SaleApartment @relation(fields: [saleApartmentId], references: [id])
+  //   saleApartmentId String
+  // }
+
+  // model Owner {
+  //   externalId    String          @id
+  //   name          String
+  //   phoneNumbers  PhoneNumber[]
+  //   type          OwnerType
+  //   url           String?
+  //   SaleApartment SaleApartment[]
+  // }
+
+  // model SaleApartment {
+  //   id                    String              @id @default(cuid())
+  //   externalId            String
+  //   title                 String
+  //   url                   String              @unique
+  //   location              String
+  //   price                 Int?
+  //   description           String
+  //   coordinates           Point?              @relation(fields: [pointId], references: [id], onDelete: Cascade)
+  //   City                  City                @relation(fields: [cityName], references: [name])
+  //   numberOfRoomsOrPeople Int
+  //   isRoom                Boolean             @default(false)
+  //   area                  Int
+  //   constructionStatus    ConstructionStatus?
+  //   floor                 Int?
+  //   buildingFloors        Int?
+  //   rent                  Int?
+  //   heating               Heating?
+  //   market                Market?
+  //   buildYear             Int?
+  //   buildingType          String?
+  //   windowsType           String?
+  //   entryPhone            Boolean?
+  //   furniture             Boolean?
+  //   balcony               Boolean?
+  //   fridge                Boolean?
+  //   lift                  Boolean?
+  //   separateKitchen       Boolean?
+  //   offerDate             DateTime?
+  //   status                Status
+  //   province              String?
+  //   createdAt             DateTime?           @default(now())
+  //   updatedAt             DateTime?           @default(now())
+  //   pointId               String?
+  //   cityName              String
+  //   owner                 Owner               @relation(fields: [ownerId], references: [externalId])
+  //   ownerId               String
+  //   Images                Image[]
+
+  //   @@index([url])
+  //   @@index([createdAt, price, cityName])
+  // }
+
+  // model RentApartment {
+  //   id                    String    @id @default(cuid())
+  //   title                 String
+  //   url                   String    @unique
+  //   location              String
+  //   price                 Int
+  //   description           String
+  //   City                  City      @relation(fields: [cityName], references: [name])
+  //   numberOfRoomsOrPeople Int
+  //   isRoom                Boolean   @default(false)
+  //   area                  Int
+  //   offerDate             DateTime?
+  //   createdAt             DateTime? @default(now())
+  //   updatedAt             DateTime? @default(now())
+  //   cityName              String
+  // }
+
+  // model City {
+  //   name           String          @id
+  //   createdAt      DateTime        @default(now())
+  //   updatedAt      DateTime        @default(now())
+  //   RentApartments RentApartment[]
+  //   SaleApartment  SaleApartment[]
+  // }
+
+  async up() {
+    this.schema.createTable(this.tableName, (table) => {
+      table.increments('id')
+
+      table.string('external_id').notNullable()
+      table.string('title').notNullable()
+      table.string('url').unique().notNullable()
+      table.string('location').notNullable()
+      table.integer('price').notNullable()
+      table.integer('area')
+      table.text('description').notNullable()
+
+      table.string('city_name').notNullable()
+      table.string('province')
+
+      table
+        .enum('status', ['active', 'removed_by_user', 'outdated'])
+        .defaultTo('active')
+        .notNullable()
+
+      table.timestamp('created_at')
+      table.timestamp('updated_at')
+    })
+  }
+
+  async down() {
+    this.schema.dropTable(this.tableName)
+  }
+}

@@ -1,0 +1,81 @@
+query Advert($id: Int64!) {
+  advert(id: $id) {
+    ... on Advert {
+      id
+      externalId
+      features
+      seo {
+        title
+        description
+      }
+      images {
+        thumbnail
+        small
+        medium
+        large
+      }
+      featuresByCategory {
+        label
+        values
+      }
+      referenceId
+      title
+      topInformation {
+        label
+        values
+        unit
+      }
+      category {
+        id
+        name {
+          locale
+          value
+        }
+      }
+      url
+      source
+      status
+      createdAt
+      modifiedAt
+      description
+      market
+      characteristics {
+        key
+        value
+        label
+        localizedValue
+        currency
+        suffix
+      }
+      additionalInformation {
+        label
+        values
+        unit
+      }
+      owner {
+        id
+        name
+        type
+        phones
+        imageUrl
+      }
+      locationDetails {
+        address {
+          street {
+            name
+            number
+          }
+          city {
+            id
+            code
+            name
+          }
+        }
+        coordinates {
+          latitude
+          longitude
+        }
+      }
+    }
+  }
+}
