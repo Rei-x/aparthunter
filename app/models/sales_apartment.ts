@@ -1,12 +1,5 @@
 import { DateTime } from 'luxon'
-import {
-  afterCreate,
-  afterDelete,
-  afterSave,
-  afterUpdate,
-  BaseModel,
-  column,
-} from '@adonisjs/lucid/orm'
+import { afterDelete, afterSave, BaseModel, column } from '@adonisjs/lucid/orm'
 import queue from '@rlanz/bull-queue/services/main'
 import ScrapeOtodomOneJob from '../jobs/scrape_otodom_one_job.js'
 
