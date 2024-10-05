@@ -2,17 +2,55 @@ name: CI
 
 on:
   pull_request:
-    branches: ["*"]
+    branches: ['*']
   push:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   build-lint:
     name: Build and Lint
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: aparthunter
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:latest
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/aparthunter
-      REDIS_URL: redis://localhost:6379
+      TZ: UTC
+      PORT: 3333
+      HOST: localhost
+      LOG_LEVEL: info
+      APP_KEY: really-hard-key-to-guess-so-please-dont-do-it
+      NODE_ENV: development
+      SESSION_DRIVER: cookie
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_DATABASE: aparthunter
+      QUEUE_REDIS_HOST: 127.0.0.1
+      QUEUE_REDIS_PORT: 6379
+      QUEUE_REDIS_PASSWORD:
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -41,10 +79,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install && pnpm prisma generate
+        run: pnpm install
 
       - name: Lint
         run: pnpm lint
 
       - name: Build
         run: pnpm build
+
+      - name: Run tests
+        run: pnpm test
