@@ -23,13 +23,13 @@ class SalesApartmentDTO {
   }
 }
 
-export default class ScrapersController {
+export default class SalesApartmentsController {
   async index({ inertia }: HttpContext) {
-    const allaApartments = await SalesApartment.all()
+    const allApartments = await SalesApartment.all()
 
     return inertia.render('home', {
       props: {
-        apartments: allaApartments.map((s) => new SalesApartmentDTO(s).toJson()),
+        apartments: allApartments.map((s) => new SalesApartmentDTO(s).toJson()),
       },
     })
   }

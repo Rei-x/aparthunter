@@ -89,6 +89,7 @@
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.0",
     "graphql-tag": "^2.12.6",
+    "layerchart": "^0.52.1",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
     "lucide-svelte": "^0.447.0",

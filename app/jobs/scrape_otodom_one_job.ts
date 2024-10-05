@@ -1,3 +1,4 @@
+import FailedApartment from '#models/failed_apartment'
 import SalesApartment from '#models/sales_apartment'
 import type { Characteristic } from '#services/graphql.generated'
 import { otodomClient } from '#services/otodom/query'
@@ -132,7 +133,23 @@ export default class ScrapeOtodomOneJob extends Job {
   /**
    * This is an optional method that gets called when the retries has exceeded and is marked failed.
    */
-  async rescue(payload: ScrapeOtodomOneJobPayload) {
-    this.logger.error(`Rescue for ${payload.id}`)
+  async rescue(payload: ScrapeOtodomOneJobPayload, error: Error) {
+    let url = null
+
+    try {
+      const ad = await otodomClient.Advert({
+        id: Number.parseInt(payload.id),
+      })
+
+      url = ad.advert?.url
+    } catch (e) {
+      this.logger.error(e)
+    }
+
+    await FailedApartment.create({
+      error: error.message,
+      externalId: payload.id,
+      url,
+    })
   }
 }

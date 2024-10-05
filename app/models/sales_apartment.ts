@@ -43,6 +43,10 @@ export default class SalesApartment extends BaseModel {
     return `saleApartmentSingle:${this.externalId}`
   }
 
+  public getRepeatableJob() {
+    return queue.get()?.getJob(this.repeatableKey)
+  }
+
   @afterSave()
   static async updateRecurringJob(salesApartment: SalesApartment) {
     if (salesApartment.status !== 'active') {

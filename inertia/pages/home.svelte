@@ -1,11 +1,10 @@
 <script lang="ts">
-  import type ScrapersController from '#controllers/scrapers_controller'
+  import type SalesApartmentController from '#controllers/scrapers_controller'
   import type { InferPageProps } from '@adonisjs/inertia/types'
-  import { Link } from 'lucide-svelte'
-  import { router } from '@inertiajs/core'
-  export let props: InferPageProps<ScrapersController, 'index'>['props']
+  import { LinkIcon } from 'lucide-svelte'
+  import { Link } from '@inertiajs/svelte'
+  export let props: InferPageProps<SalesApartmentController, 'index'>['props']
 
-  // 1000000 -> 1 000 000
   const formatPrice = (price: number) => {
     return price.toLocaleString('pl', {
       style: 'currency',
@@ -14,13 +13,6 @@
       maximumFractionDigits: 0,
     })
   }
-
-  setInterval(() => {
-    if (typeof window === 'undefined') {
-      return
-    }
-    router.reload()
-  }, 1000)
 </script>
 
 <svelte:head>
@@ -29,6 +21,15 @@
 
 <div class="p-4">
   <div class="text-4xl">aparthunter???</div>
+  <Link href="/fails">Fails</Link>
+  <iframe
+    src="http://metabase.suzuya.dev/public/dashboard/e71d10dc-6920-41d3-8fe4-91478d93d5ec"
+    frameborder="0"
+    width="800"
+    height="600"
+    allowtransparency
+    title="Aparthunter"
+  />
   <div class="flex flex-wrap gap-4">
     {#each props.apartments as apartment}
       <div class="flex flex-col gap-2 rounded-md bg-slate-50 p-4 shadow-sm">
@@ -40,7 +41,7 @@
             </div>
           </div>
           <a href={apartment.url} target="_blank" rel="noopener noreferrer">
-            <Link />
+            <LinkIcon />
           </a>
         </div>
       </div>
