@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3333:3333"
+      - '3333:3333'
     environment:
       - TZ=UTC
       - PORT=3333

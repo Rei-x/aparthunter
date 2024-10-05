@@ -870,4 +870,3 @@ Zapraszam do kontaktu. Pośrednikom dziękujemy. 
   "url": "https://www.otodom.pl/pl/oferta/mieszkanie-3-pokoje-z-ogrodkiem-osiedle-malownicze-ID4p6PC",
   "userAdverts": [],
 }`
-
