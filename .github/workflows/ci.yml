@@ -1,4 +1,4 @@
-name: E2E
+name: CI
 
 on:
   pull_request:
@@ -7,8 +7,8 @@ on:
     branches: ['main']
 
 jobs:
-  build-lint:
-    name: Build and Lint
+  lint-build-test:
+    name: Lint, Build and Test
     runs-on: ubuntu-latest
     services:
       postgres:

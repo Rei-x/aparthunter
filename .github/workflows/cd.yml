@@ -12,7 +12,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     permissions:
       contents: read
