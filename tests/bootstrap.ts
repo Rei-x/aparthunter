@@ -5,6 +5,7 @@ import { pluginAdonisJS } from '@japa/plugin-adonisjs'
 import testUtils from '@adonisjs/core/services/test_utils'
 import { snapshot } from '@japa/snapshot'
 import { expect } from '@japa/expect'
+import { browserClient } from '@japa/browser-client'
 /**
  * This file is imported by the "bin/test.ts" entrypoint file
  */
@@ -13,7 +14,15 @@ import { expect } from '@japa/expect'
  * Configure Japa plugins in the plugins array.
  * Learn more - https://japa.dev/docs/runner-config#plugins-optional
  */
-export const plugins: Config['plugins'] = [assert(), pluginAdonisJS(app), snapshot(), expect()]
+export const plugins: Config['plugins'] = [
+  assert(),
+  pluginAdonisJS(app),
+  snapshot(),
+  expect(),
+  browserClient({
+    runInSuites: ['browser'],
+  }),
+]
 
 /**
  * Configure lifecycle function to run before and after all the
@@ -32,7 +41,6 @@ export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
  * Learn more - https://japa.dev/docs/test-suites#lifecycle-hooks
  */
 export const configureSuite: Config['configureSuite'] = (suite) => {
-  console.log(suite.name)
   if (['browser', 'functional', 'e2e'].includes(suite.name)) {
     suite.onGroup((group) => {
       group.each.setup(() => {
