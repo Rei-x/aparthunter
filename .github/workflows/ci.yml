@@ -1,4 +1,4 @@
-name: CI
+name: E2E
 
 on:
   pull_request:
@@ -97,5 +97,5 @@ jobs:
         if: always()
 
       - name: Run e2e tests
-        run: pnpm e2e --force-exit
+        run: pnpm e2e
         if: always()
