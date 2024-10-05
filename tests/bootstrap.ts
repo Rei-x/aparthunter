@@ -16,12 +16,12 @@ import { browserClient } from '@japa/browser-client'
  */
 export const plugins: Config['plugins'] = [
   assert(),
-  pluginAdonisJS(app),
-  snapshot(),
-  expect(),
   browserClient({
     runInSuites: ['browser'],
   }),
+  snapshot(),
+  expect(),
+  pluginAdonisJS(app),
 ]
 
 /**

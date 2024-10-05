@@ -95,3 +95,7 @@ jobs:
       - name: Run tests
         run: pnpm test
         if: always()
+
+      - name: Run e2e tests
+        run: pnpm e2e
+        if: always()
