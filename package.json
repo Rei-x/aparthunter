@@ -13,7 +13,7 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "codegen": "graphql-codegen --config codegen.ts",
-    "prepare": "husky"
+    "prepare": "if [ -z $CI ]; then husky; fi"
   },
   "imports": {
     "#controllers/*": "./app/controllers/*.js",
