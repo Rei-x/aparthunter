@@ -83,9 +83,12 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+        if: always()
 
       - name: Build
         run: pnpm build
+        if: always()
 
       - name: Run tests
         run: pnpm test
+        if: always()
