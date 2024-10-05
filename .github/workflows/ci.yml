@@ -97,5 +97,5 @@ jobs:
         if: always()
 
       - name: Run e2e tests
-        run: pnpm e2e
+        run: pnpm e2e --force-exit
         if: always()
