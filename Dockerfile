@@ -1,4 +1,4 @@
-FROM node:20.12.2-alpine3.18 AS base
+FROM node:22.2.0-alpine3.18 AS base
 ENV CI=true
 RUN corepack enable
 # All deps stage
